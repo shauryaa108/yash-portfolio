@@ -24,5 +24,11 @@ export default async function handler(request) {
         maxRank: user.maxRank
     };
 
-    return Response.json(codeforcesStats);
+    return new Response(JSON.stringify(codeforcesStats), {
+    headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-store",
+    },
+    });
+
 }

@@ -31,30 +31,25 @@ function CodingProfiles() {
 
   useEffect(() => {
 
-    const fetchProfiles = async () => {
+  const fetchProfiles = async () => {
 
-      const [leetcodeResponse, codechefResponse, codeforcesResponse] =
-        await Promise.all([
-          fetch("/api/leetcode"),
-          fetch("/api/codechef"),
-          fetch("/api/codeforces")
-        ]);
+    const leetcodeResponse = await fetch("/api/leetcode");
+    const leetcodeData = await leetcodeResponse.json();
+    setLeetcode(leetcodeData);
 
+    const codeforcesResponse = await fetch("/api/codeforces");
+    const codeforcesData = await codeforcesResponse.json();
+    setCodeforces(codeforcesData);
 
-      const leetcodeData = await leetcodeResponse.json();
-      const codechefData = await codechefResponse.json();
-      const codeforcesData = await codeforcesResponse.json();
+    const codechefResponse = await fetch("/api/codechef");
+    const codechefData = await codechefResponse.json();
+    setCodechef(codechefData);
 
+  };
 
-      setLeetcode(leetcodeData);
-      setCodechef(codechefData);
-      setCodeforces(codeforcesData);
-    };
+  fetchProfiles();
 
-
-    fetchProfiles();
-
-  }, []);
+}, []);
 
 
   return (

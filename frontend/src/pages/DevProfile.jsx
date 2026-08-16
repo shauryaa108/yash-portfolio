@@ -35,7 +35,7 @@ function DevProfile() {
 
         <div className="dev-profile-file">
           <span className="file-dot" />
-          dev.yash.md
+          dev.yash.json
         </div>
 
         <span className="readonly-label">
