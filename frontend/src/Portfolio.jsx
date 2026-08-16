@@ -50,6 +50,18 @@ const projects = [
 
 function Portfolio({ active, setActive, scrollTo }) {
     const navigate = useNavigate();
+
+  const scrollTo = (id, name) => {
+    const section = document.getElementById(id);
+
+    if (section) {
+      section.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+
+      setActive(name);
+    }
     return (
         <div className="site-shell">
       <aside className="sidebar">
@@ -115,7 +127,12 @@ function Portfolio({ active, setActive, scrollTo }) {
 
       <main className="content">
         <header className="topbar">
-          <a className="pill pill-light" href="#profile">dev.yash.md</a>
+          <Link
+            className="pill pill-light"
+            to="/dev.yash.md"
+          >
+            dev.yash.md
+          </Link>
           <a  className="pill pill-dark" 
               href="https://mail.google.com/mail/?view=cm&fs=1&to=yashgoyal.ec@gmail.com" 
               target="_blank" 
@@ -179,7 +196,7 @@ function Portfolio({ active, setActive, scrollTo }) {
 
         <section id="projects" className="projects-section section">
           <div className="projects-heading">
-            <p className="eyebrow">PROJECTS / 03</p>
+            <p className="eyebrow">PROJECTS / 02</p>
 
             <div className="projects-intro">
               <h2>Things I’ve built.</h2>
@@ -240,13 +257,13 @@ function Portfolio({ active, setActive, scrollTo }) {
         </section>
 
         <section id="blogs" className="placeholder section">
-          <p className="eyebrow">BLOGS / 04</p>
+          <p className="eyebrow">BLOGS / 03</p>
           <h2>Things I’ve learned.</h2>
           <p>We’ll connect this to Markdown/MDX posts after the main visual system is locked.</p>
         </section>
 
         <section id="contact" className="placeholder section contact-section">
-          <p className="eyebrow">CONTACT / 05</p>
+          <p className="eyebrow">CONTACT / 04</p>
           <h2>Let’s build something.</h2>
           <a
             className="pill pill-dark"

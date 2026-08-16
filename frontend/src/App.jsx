@@ -6,6 +6,7 @@ import ChatAppy from './pages/ChatAppy';
 import Socialite from './pages/Socialite';
 import MarkupLens from './pages/MarkupLens';
 import CodingProfiles from './pages/CodingProfiles';
+import DevProfile from './pages/DevProfile';
 
 function App() {
   return (
@@ -21,6 +22,11 @@ function App() {
         <Route
           path="/coding-profiles"
           element={<CodingProfiles />}
+        />
+
+        <Route
+          path="/dev.yash.md"
+          element={<DevProfile />}
         />
       </Routes>
     </BrowserRouter>
