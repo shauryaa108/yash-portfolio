@@ -1,5 +1,6 @@
+import { useEffect, useState } from "react";
+
 import './CodingProfiles.css';
-import handler from '../../api/leetcode';
 
 
 const profiles = [
@@ -21,6 +22,17 @@ const profiles = [
 ];
 
 function CodingProfiles() {
+  const [leetcode, setLeetcode] = useState(null);
+  useEffect(() => {
+    const fetchLeetcode = async () => {
+      const response = await fetch("/api/leetcode");
+      const data = await response.json();
+
+      setLeetcode(data);
+    };
+
+    fetchLeetcode();
+  }, []);
   return (
     <main className="coding-page">
       <section className="coding-header">
@@ -55,12 +67,47 @@ function CodingProfiles() {
               <div className="coding-stats">
                 <div>
                   <span>PROBLEMS</span>
-                  <strong>—</strong>
+                  <strong>
+                    {profile.platform === 'LEETCODE'
+                      ? leetcode?.total ?? '...'
+                      : '—'}
+                  </strong>
                 </div>
+                <div className="coding-difficulty">
+                  <div>
+                    <span>EASY</span>
+                    <strong>
+                      {profile.platform === 'LEETCODE'
+                        ? leetcode?.easy ?? '...'
+                        : '—'}
+                    </strong>
+                  </div>
 
+                  <div>
+                    <span>MEDIUM</span>
+                    <strong>
+                      {profile.platform === 'LEETCODE'
+                        ? leetcode?.medium ?? '...'
+                        : '—'}
+                    </strong>
+                  </div>
+
+                  <div>
+                    <span>HARD</span>
+                    <strong>
+                      {profile.platform === 'LEETCODE'
+                        ? leetcode?.hard ?? '...'
+                        : '—'}
+                    </strong>
+                  </div>
+                </div>
                 <div>
                   <span>RATING</span>
-                  <strong>—</strong>
+                  <strong>
+                    {profile.platform === 'LEETCODE'
+                      ? leetcode?.rating ?? '...'
+                      : '—'}
+                  </strong>
                 </div>
               </div>
             </div>
