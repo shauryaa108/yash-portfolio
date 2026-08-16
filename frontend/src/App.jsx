@@ -8,16 +8,37 @@ import MarkupLens from './pages/MarkupLens';
 import CodingProfiles from './pages/CodingProfiles';
 import DevProfile from './pages/DevProfile';
 
+
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Portfolio />} />
 
-        <Route path="/authensight" element={<AuthenSight />} />
-        <Route path="/chatappy" element={<ChatAppy />} />
-        <Route path="/socialite" element={<Socialite />} />
-        <Route path="/markuplens" element={<MarkupLens />} />
+      <Routes>
+
+        <Route
+          path="/"
+          element={<Portfolio />}
+        />
+
+        <Route
+          path="/authensight"
+          element={<AuthenSight />}
+        />
+
+        <Route
+          path="/chatappy"
+          element={<ChatAppy />}
+        />
+
+        <Route
+          path="/socialite"
+          element={<Socialite />}
+        />
+
+        <Route
+          path="/markuplens"
+          element={<MarkupLens />}
+        />
 
         <Route
           path="/coding-profiles"
@@ -28,9 +49,12 @@ function App() {
           path="/dev.yash.md"
           element={<DevProfile />}
         />
+
       </Routes>
+
     </BrowserRouter>
   );
 }
+
 
 export default App;

@@ -48,8 +48,9 @@ const projects = [
     }
   ];
 
-function Portfolio({ active, setActive }) {
+function Portfolio() {
    const navigate = useNavigate();
+   const [active, setActive] = useState('Profile');
 
     const scrollTo = (id, name) => {
       const section = document.getElementById(id);

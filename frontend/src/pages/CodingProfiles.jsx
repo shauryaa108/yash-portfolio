@@ -21,22 +21,50 @@ const profiles = [
   },
 ];
 
-function CodingProfiles() {
-  const [leetcode, setLeetcode] = useState(null);
-  useEffect(() => {
-    const fetchLeetcode = async () => {
-      const response = await fetch("/api/leetcode");
-      const data = await response.json();
 
-      setLeetcode(data);
+function CodingProfiles() {
+
+  const [leetcode, setLeetcode] = useState(null);
+  const [codechef, setCodechef] = useState(null);
+  const [codeforces, setCodeforces] = useState(null);
+
+
+  useEffect(() => {
+
+    const fetchProfiles = async () => {
+
+      const [leetcodeResponse, codechefResponse, codeforcesResponse] =
+        await Promise.all([
+          fetch("/api/leetcode"),
+          fetch("/api/codechef"),
+          fetch("/api/codeforces")
+        ]);
+
+
+      const leetcodeData = await leetcodeResponse.json();
+      const codechefData = await codechefResponse.json();
+      const codeforcesData = await codeforcesResponse.json();
+
+
+      setLeetcode(leetcodeData);
+      setCodechef(codechefData);
+      setCodeforces(codeforcesData);
     };
 
-    fetchLeetcode();
+
+    fetchProfiles();
+
   }, []);
+
+
   return (
     <main className="coding-page">
+
       <section className="coding-header">
-        <span className="coding-eyebrow">CODING PROFILES</span>
+
+        <span className="coding-eyebrow">
+          CODING PROFILES
+        </span>
 
         <h1>
           Where I <em>code.</em>
@@ -46,12 +74,21 @@ function CodingProfiles() {
           A live snapshot of my competitive programming
           and problem-solving activity.
         </p>
+
       </section>
 
+
       <section className="coding-grid">
+
         {profiles.map((profile) => (
-          <article className="coding-card" key={profile.platform}>
+
+          <article
+            className="coding-card"
+            key={profile.platform}
+          >
+
             <div className="coding-card-top">
+
               <span className="coding-platform">
                 {profile.platform}
               </span>
@@ -59,58 +96,109 @@ function CodingProfiles() {
               <span className="coding-live">
                 ● LIVE
               </span>
+
             </div>
 
+
             <div className="coding-card-content">
-              <h2>{profile.username}</h2>
+
+              <h2>
+                {profile.username}
+              </h2>
+
 
               <div className="coding-stats">
+
                 <div>
                   <span>PROBLEMS</span>
+
                   <strong>
                     {profile.platform === 'LEETCODE'
                       ? leetcode?.total ?? '...'
+                      : profile.platform === 'CODECHEF'
+                      ? codechef?.problems ?? '...'
                       : '—'}
                   </strong>
                 </div>
-                <div className="coding-difficulty">
-                  <div>
-                    <span>EASY</span>
-                    <strong>
-                      {profile.platform === 'LEETCODE'
-                        ? leetcode?.easy ?? '...'
-                        : '—'}
-                    </strong>
+
+
+                {profile.platform === 'LEETCODE' && (
+
+                  <div className="coding-difficulty">
+
+                    <div>
+                      <span>EASY</span>
+                      <strong>
+                        {leetcode?.easy ?? '...'}
+                      </strong>
+                    </div>
+
+                    <div>
+                      <span>MEDIUM</span>
+                      <strong>
+                        {leetcode?.medium ?? '...'}
+                      </strong>
+                    </div>
+
+                    <div>
+                      <span>HARD</span>
+                      <strong>
+                        {leetcode?.hard ?? '...'}
+                      </strong>
+                    </div>
+
                   </div>
 
-                  <div>
-                    <span>MEDIUM</span>
-                    <strong>
-                      {profile.platform === 'LEETCODE'
-                        ? leetcode?.medium ?? '...'
-                        : '—'}
-                    </strong>
-                  </div>
+                )}
 
-                  <div>
-                    <span>HARD</span>
-                    <strong>
-                      {profile.platform === 'LEETCODE'
-                        ? leetcode?.hard ?? '...'
-                        : '—'}
-                    </strong>
-                  </div>
-                </div>
+
                 <div>
                   <span>RATING</span>
+
                   <strong>
+
                     {profile.platform === 'LEETCODE'
                       ? leetcode?.rating ?? '...'
-                      : '—'}
+
+                      : profile.platform === 'CODECHEF'
+                      ? codechef?.rating ?? '...'
+
+                      : codeforces?.rating ?? '...'}
+
                   </strong>
+
                 </div>
+
+
+                {profile.platform === 'CODEFORCES' && (
+
+                  <div>
+                    <span>RANK</span>
+
+                    <strong>
+                      {codeforces?.rank ?? '...'}
+                    </strong>
+                  </div>
+
+                )}
+
+
+                {profile.platform === 'CODECHEF' && (
+
+                  <div>
+                    <span>GLOBAL RANK</span>
+
+                    <strong>
+                      {codechef?.globalRanking ?? '...'}
+                    </strong>
+                  </div>
+
+                )}
+
               </div>
+
             </div>
+
 
             <a
               href={profile.url}
@@ -120,11 +208,16 @@ function CodingProfiles() {
             >
               View Profile <span>↗</span>
             </a>
+
           </article>
+
         ))}
+
       </section>
+
     </main>
   );
 }
+
 
 export default CodingProfiles;
