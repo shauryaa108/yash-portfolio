@@ -7,7 +7,7 @@ function DevProfile() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/dev.yash.md')
+    fetch('/projects/dev.yash.md')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Unable to load dev.yash.md');
