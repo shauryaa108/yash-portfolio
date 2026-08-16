@@ -44,6 +44,13 @@ function App() {
           path="/coding-profiles"
           element={<CodingProfiles />}
         />
+        <a
+          href="https://drive.google.com/file/d/1zE-OycEKWjCI97JGwVjKmHfWN8i3f9Ot/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          RESUME <span>↗</span>
+        </a>
 
         <Route
           path="/dev.yash.md"
