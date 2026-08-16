@@ -51,17 +51,18 @@ const projects = [
 function Portfolio({ active, setActive }) {
    const navigate = useNavigate();
 
-  const scrollTo = (id, name) => {
-    const section = document.getElementById(id);
+    const scrollTo = (id, name) => {
+      const section = document.getElementById(id);
 
-    if (section) {
-      section.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
+      if (section) {
+        section.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
 
-      setActive(name);
-    }
+        setActive(name);
+      }
+    };
     return (
         <div className="site-shell">
       <aside className="sidebar">
@@ -278,6 +279,6 @@ function Portfolio({ active, setActive }) {
     </div>
     );
 }
-}
+
 
 export default Portfolio
