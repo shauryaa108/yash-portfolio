@@ -278,5 +278,6 @@ function Portfolio({ active, setActive, scrollTo }) {
     </div>
     );
 }
+}
 
 export default Portfolio
