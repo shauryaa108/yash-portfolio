@@ -4,7 +4,7 @@ export default async function handler(req, res) {
 
     // Get rating and rank
     const userResponse = await fetch(
-      "https://codeforces.com/api/user.info?handles=yash_goyal"
+      "https://codeforces.com/api/user.info?handles=yash_goyal.."
     );
 
     const userData = await userResponse.json();
@@ -15,7 +15,7 @@ export default async function handler(req, res) {
 
     // Get all submissions
     const submissionsResponse = await fetch(
-      "https://codeforces.com/api/user.status?handle=yash_goyal"
+      "https://codeforces.com/api/user.status?handle=yash_goyal.."
     );
 
     const submissionsData = await submissionsResponse.json();
