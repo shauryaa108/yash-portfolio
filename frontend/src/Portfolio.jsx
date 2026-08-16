@@ -49,7 +49,7 @@ const projects = [
   ];
 
 function Portfolio({ active, setActive, scrollTo }) {
-    const navigate = useNavigate();
+   const navigate = useNavigate();
 
   const scrollTo = (id, name) => {
     const section = document.getElementById(id);
