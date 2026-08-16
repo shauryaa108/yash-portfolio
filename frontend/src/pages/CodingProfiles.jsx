@@ -112,6 +112,8 @@ function CodingProfiles() {
                       ? leetcode?.total ?? '...'
                       : profile.platform === 'CODECHEF'
                       ? codechef?.problems ?? '...'
+                      : profile.platform === 'CODEFORCES'
+                      ? codeforces?.problems ?? '...'
                       : '—'}
                   </strong>
                 </div>
