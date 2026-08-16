@@ -28,30 +28,78 @@ export default async function handler(req, res) {
 
     const $ = cheerio.load(html);
 
+    // -----------------------------
+    // USERNAME
+    // -----------------------------
 
     const username =
       $(".user-name").first().text().trim() ||
       "ambush_note_86";
 
-    const ratingText = $(".rating-number").first().text().trim();
 
-    const rating = ratingText
-      ? Number(ratingText.replace(/,/g, ""))
-      : null;
+    // -----------------------------
+    // RATING
+    // -----------------------------
+
+    let rating = null;
+
+    const ratingText = $(".rating-number")
+      .first()
+      .text()
+      .trim();
+
+    if (ratingText) {
+      rating = Number(
+        ratingText.replace(/,/g, "")
+      );
+    }
+
+
+    // -----------------------------
+    // TOTAL PROBLEMS SOLVED
+    // -----------------------------
 
     let problems = null;
 
-    $(".rating-data-section").each((index, element) => {
-      const text = $(element).text().trim();
+    // Get all visible text from the page
+    const bodyText = $("body")
+      .text()
+      .replace(/\s+/g, " ")
+      .trim();
 
-      if (text.toLowerCase().includes("problems solved")) {
-        const match = text.match(/(\d+)\s*problems?\s*solved/i);
+    console.log(
+      "Searching CodeChef text for problems..."
+    );
 
-        if (match) {
-          problems = Number(match[1]);
-        }
+    const problemsMatch = bodyText.match(
+      /Total\s+Problems\s+Solved\s*:\s*([\d,]+)/i
+    );
+
+    if (problemsMatch) {
+      problems = Number(
+        problemsMatch[1].replace(/,/g, "")
+      );
+    }
+
+
+    // -----------------------------
+    // FALLBACK RATING
+    // -----------------------------
+
+    if (rating === null) {
+      const ratingMatch = bodyText.match(
+        /CodeChef\s+Rating\s+(\d+)/i
+      );
+
+      if (ratingMatch) {
+        rating = Number(ratingMatch[1]);
       }
-    });
+    }
+
+
+    // -----------------------------
+    // FINAL RESPONSE
+    // -----------------------------
 
     const codechefStats = {
       username,
@@ -59,12 +107,18 @@ export default async function handler(req, res) {
       rating,
     };
 
-    console.log("CodeChef stats:", codechefStats);
+    console.log(
+      "CodeChef stats:",
+      codechefStats
+    );
 
     return res.status(200).json(codechefStats);
 
   } catch (error) {
-    console.error("CodeChef error:", error);
+    console.error(
+      "CodeChef error:",
+      error
+    );
 
     return res.status(500).json({
       error: "Failed to fetch CodeChef data",
