@@ -48,7 +48,7 @@ const projects = [
     }
   ];
 
-function Portfolio({ active, setActive, scrollTo }) {
+function Portfolio({ active, setActive }) {
    const navigate = useNavigate();
 
   const scrollTo = (id, name) => {
