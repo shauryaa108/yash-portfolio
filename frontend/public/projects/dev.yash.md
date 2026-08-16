@@ -73,8 +73,7 @@
     "other": [
       "Socket.IO",
       "Git",
-      "GitHub",
-      "Docker"
+      "GitHub"
     ]
   },
 
