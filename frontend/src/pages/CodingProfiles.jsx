@@ -1,7 +1,6 @@
 import './CodingProfiles.css';
-import handler from '../api/leetcode';
+import handler from '../../api/leetcode';
 
-const response = await fetch(handler())
 
 const profiles = [
   {
