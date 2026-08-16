@@ -1,0 +1,785 @@
+.chatappy-page {
+  min-height: 100vh;
+  background: #f3edcf;
+  color: #151513;
+  padding: 0 5vw;
+
+  font-family: Inter, system-ui, sans-serif;
+}
+
+
+/* ───────────────── HEADER ───────────────── */
+
+.chatappy-header {
+  padding: 2rem 0 6rem;
+}
+
+.chatappy-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chatappy-eyebrow {
+  margin: 0;
+
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+}
+
+.chatappy-back {
+  color: #151513;
+  text-decoration: none;
+
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+}
+
+.chatappy-title-area {
+  margin-top: 7rem;
+}
+
+.chatappy-category {
+  margin: 0 0 1.5rem;
+
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+
+  opacity: 0.55;
+}
+
+.chatappy-title-area h1 {
+  margin: 0;
+
+  font-size: clamp(5rem, 13vw, 12rem);
+  line-height: 0.78;
+
+  font-weight: 500;
+  letter-spacing: -0.08em;
+}
+
+.chatappy-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  gap: 3rem;
+  margin-top: 4rem;
+}
+
+.chatappy-intro > p {
+  max-width: 650px;
+  margin: 0;
+
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.6;
+}
+
+.chatappy-github {
+  flex-shrink: 0;
+
+  display: inline-flex;
+  gap: 0.5rem;
+
+  padding: 0.8rem 1.2rem;
+
+  background: #151513;
+  color: #f3edcf;
+
+  text-decoration: none;
+
+  font-size: 0.8rem;
+}
+
+.chatappy-github span {
+  transition: transform 0.2s ease;
+}
+
+.chatappy-github:hover span {
+  transform: translate(3px, -3px);
+}
+
+
+/* ───────────────── HERO ───────────────── */
+
+.chatappy-hero {
+  margin-bottom: 6rem;
+}
+
+.chatappy-hero-inner {
+  position: relative;
+
+  min-height: 65vh;
+  padding: 2rem;
+
+  background: #080808;
+  color: #f3edcf;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  overflow: hidden;
+}
+
+.chatappy-hero-inner::before {
+  content: "";
+
+  position: absolute;
+
+  width: 45vw;
+  height: 45vw;
+
+  border: 1px solid rgba(243, 237, 207, 0.16);
+  border-radius: 50%;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+.chatappy-hero-inner::after {
+  content: "";
+
+  position: absolute;
+
+  width: 25vw;
+  height: 25vw;
+
+  border: 1px solid rgba(243, 237, 207, 0.18);
+  border-radius: 50%;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+.chatappy-hero-label {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  justify-content: space-between;
+
+  font-family: "DM Mono", monospace;
+  font-size: 0.65rem;
+
+  opacity: 0.55;
+}
+
+.chatappy-terminal {
+  position: relative;
+  z-index: 2;
+
+  width: min(650px, 80%);
+
+  margin: auto;
+
+  background: #151513;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.chatappy-terminal-head {
+  display: flex;
+  gap: 0.4rem;
+
+  padding: 0.8rem 1rem;
+
+  border-bottom: 1px solid rgba(243, 237, 207, 0.1);
+}
+
+.chatappy-terminal-head i {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #f3edcf;
+
+  opacity: 0.35;
+}
+
+.chatappy-terminal-body {
+  padding: 1.8rem;
+
+  font-family: "DM Mono", monospace;
+  font-size: 0.75rem;
+
+  line-height: 1.9;
+}
+
+.chatappy-terminal-body p {
+  margin: 0;
+}
+
+.chatappy-terminal-muted {
+  opacity: 0.4;
+}
+
+.chatappy-cursor {
+  display: inline-block;
+
+  width: 7px;
+  height: 13px;
+
+  background: #f3edcf;
+
+  vertical-align: middle;
+
+  animation: chatappy-blink 1s infinite;
+}
+
+@keyframes chatappy-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.chatappy-hero-bottom {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  justify-content: space-between;
+
+  font-family: "DM Mono", monospace;
+  font-size: 0.65rem;
+
+  opacity: 0.55;
+}
+
+
+/* ───────────────── SECTIONS ───────────────── */
+
+.chatappy-section {
+  display: grid;
+
+  grid-template-columns: 180px minmax(0, 850px);
+
+  gap: 4rem;
+
+  max-width: 1150px;
+
+  margin: 0 auto;
+
+  padding: 8rem 0;
+
+  border-top: 1px solid rgba(21, 21, 19, 0.25);
+}
+
+.chatappy-section-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  font-family: "DM Mono", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+}
+
+.chatappy-section-label span {
+  opacity: 0.45;
+}
+
+.chatappy-section-label p {
+  margin: 0;
+}
+
+.chatappy-section-content {
+  min-width: 0;
+}
+
+.chatappy-section-content h2 {
+  margin: 0 0 2.5rem;
+
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  line-height: 0.95;
+
+  font-weight: 500;
+  letter-spacing: -0.055em;
+}
+
+.chatappy-section-content > p {
+  max-width: 700px;
+
+  margin: 0 0 1.4rem;
+
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+
+/* ───────────────── DARK ───────────────── */
+
+.chatappy-dark {
+  max-width: none;
+
+  margin-left: -5vw;
+  margin-right: -5vw;
+
+  padding-left: 5vw;
+  padding-right: 5vw;
+
+  background: #080808;
+  color: #f3edcf;
+
+  border-top: none;
+}
+
+.chatappy-dark .chatappy-section-content > p {
+  color: rgba(243, 237, 207, 0.7);
+}
+
+
+/* ───────────────── CONNECTION FLOW ───────────────── */
+
+.chatappy-flow {
+  display: flex;
+  align-items: center;
+
+  gap: 0.8rem;
+
+  margin-top: 4rem;
+}
+
+.chatappy-flow-node {
+  flex: 1;
+
+  min-height: 150px;
+
+  padding: 1.3rem;
+
+  background: #151513;
+  color: #f3edcf;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chatappy-flow-node span {
+  font-family: "DM Mono", monospace;
+  font-size: 0.65rem;
+
+  opacity: 0.4;
+}
+
+.chatappy-flow-node strong {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.chatappy-flow-node small {
+  font-size: 0.7rem;
+
+  opacity: 0.5;
+}
+
+.chatappy-flow-highlight {
+  background: #ded69e;
+  color: #151513;
+}
+
+.chatappy-flow-arrow {
+  font-size: 1.5rem;
+}
+
+.chatappy-flow-description {
+  margin-top: 2rem !important;
+}
+
+
+/* ───────────────── EVENTS ───────────────── */
+
+.chatappy-events {
+  margin-top: 4rem;
+
+  border-top: 1px solid rgba(21, 21, 19, 0.25);
+}
+
+.chatappy-event {
+  display: grid;
+
+  grid-template-columns: 60px 1fr;
+
+  gap: 2rem;
+
+  padding: 2rem 0;
+
+  border-bottom: 1px solid rgba(21, 21, 19, 0.25);
+}
+
+.chatappy-event > span {
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+
+  opacity: 0.4;
+}
+
+.chatappy-event h3 {
+  margin: 0 0 0.6rem;
+
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.chatappy-event p {
+  max-width: 600px;
+
+  margin: 0;
+
+  line-height: 1.65;
+}
+
+
+/* ───────────────── SECURITY ───────────────── */
+
+.chatappy-security-card {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  margin-top: 4rem;
+
+  border: 1px solid rgba(243, 237, 207, 0.2);
+}
+
+.chatappy-security-card div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+
+  padding: 1.5rem;
+
+  border-right: 1px solid rgba(243, 237, 207, 0.2);
+}
+
+.chatappy-security-card div:last-child {
+  border-right: none;
+}
+
+.chatappy-security-card span {
+  font-family: "DM Mono", monospace;
+  font-size: 0.65rem;
+
+  opacity: 0.4;
+}
+
+.chatappy-security-card strong {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+
+/* ───────────────── EMAIL ───────────────── */
+
+.chatappy-email-note {
+  margin-top: 4rem;
+
+  padding: 1.5rem;
+
+  border: 1px solid rgba(21, 21, 19, 0.3);
+}
+
+.chatappy-email-note span {
+  font-family: "DM Mono", monospace;
+  font-size: 0.65rem;
+
+  opacity: 0.5;
+}
+
+.chatappy-email-note p {
+  max-width: 650px;
+
+  margin: 1rem 0 0;
+
+  font-size: 1.15rem;
+  line-height: 1.5;
+}
+
+
+/* ───────────────── TECH STACK ───────────────── */
+
+.chatappy-stack-section {
+  max-width: none;
+
+  margin-left: -5vw;
+  margin-right: -5vw;
+
+  padding-left: 5vw;
+  padding-right: 5vw;
+
+  background: #ded69e;
+}
+
+.chatappy-tech-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 1rem;
+
+  margin-top: 4rem;
+}
+
+.chatappy-tech-card {
+  min-height: 180px;
+
+  padding: 1.5rem;
+
+  background: #151513;
+  color: #f3edcf;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chatappy-tech-card span {
+  font-family: "DM Mono", monospace;
+  font-size: 0.62rem;
+
+  opacity: 0.45;
+}
+
+.chatappy-tech-card h3 {
+  margin: 0;
+
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+
+/* ───────────────── LEARNINGS ───────────────── */
+
+.chatappy-learnings {
+  margin-top: 4rem;
+
+  border-top: 1px solid rgba(243, 237, 207, 0.25);
+}
+
+.chatappy-learnings div {
+  display: grid;
+
+  grid-template-columns: 60px 1fr;
+
+  padding: 1.4rem 0;
+
+  border-bottom: 1px solid rgba(243, 237, 207, 0.25);
+}
+
+.chatappy-learnings span {
+  font-family: "DM Mono", monospace;
+  font-size: 0.65rem;
+
+  opacity: 0.4;
+}
+
+.chatappy-learnings p {
+  margin: 0;
+
+  font-size: 1.1rem;
+}
+
+
+/* ───────────────── LIMITATIONS ───────────────── */
+
+.chatappy-limitation-note {
+  margin-top: 4rem;
+
+  padding: 1.5rem;
+
+  border: 1px solid rgba(21, 21, 19, 0.3);
+}
+
+.chatappy-limitation-note span {
+  font-family: "DM Mono", monospace;
+  font-size: 0.65rem;
+
+  opacity: 0.5;
+}
+
+.chatappy-limitation-note p {
+  max-width: 650px;
+
+  margin: 1rem 0 0;
+
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+
+/* ───────────────── FOOTER ───────────────── */
+
+.chatappy-footer {
+  padding: 10rem 0 4rem;
+
+  text-align: center;
+}
+
+.chatappy-footer h2 {
+  margin: 2rem 0 3rem;
+
+  font-size: clamp(3.5rem, 9vw, 9rem);
+  line-height: 0.85;
+
+  font-weight: 500;
+  letter-spacing: -0.07em;
+}
+
+.chatappy-footer-button {
+  display: inline-flex;
+
+  gap: 0.5rem;
+
+  padding: 0.9rem 1.3rem;
+
+  background: #151513;
+  color: #f3edcf;
+
+  text-decoration: none;
+
+  font-size: 0.8rem;
+}
+
+.chatappy-footer-button span {
+  transition: transform 0.2s ease;
+}
+
+.chatappy-footer-button:hover span {
+  transform: translate(3px, -3px);
+}
+
+.chatappy-footer-back {
+  display: block;
+
+  margin-top: 4rem;
+
+  color: #151513;
+
+  text-decoration: none;
+
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+}
+
+
+/* ───────────────── RESPONSIVE ───────────────── */
+
+@media (max-width: 850px) {
+
+  .chatappy-page {
+    padding: 0 1.2rem;
+  }
+
+  .chatappy-title-area {
+    margin-top: 5rem;
+  }
+
+  .chatappy-intro {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .chatappy-section {
+    grid-template-columns: 1fr;
+
+    gap: 2rem;
+
+    padding: 5rem 0;
+  }
+
+  .chatappy-dark,
+  .chatappy-stack-section {
+    margin-left: -1.2rem;
+    margin-right: -1.2rem;
+
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+
+  .chatappy-flow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .chatappy-flow-arrow {
+    text-align: center;
+
+    transform: rotate(90deg);
+  }
+
+  .chatappy-tech-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .chatappy-hero-inner {
+    min-height: 55vh;
+  }
+
+  .chatappy-terminal {
+    width: 90%;
+  }
+}
+
+
+@media (max-width: 500px) {
+
+  .chatappy-header {
+    padding-top: 1.5rem;
+  }
+
+  .chatappy-title-area h1 {
+    font-size: 25vw;
+  }
+
+  .chatappy-hero-inner {
+    min-height: 45vh;
+
+    padding: 1rem;
+  }
+
+  .chatappy-terminal {
+    width: 100%;
+  }
+
+  .chatappy-terminal-body {
+    padding: 1.2rem;
+
+    font-size: 0.65rem;
+  }
+
+  .chatappy-section-content h2 {
+    font-size: 2.5rem;
+  }
+
+  .chatappy-event {
+    grid-template-columns: 40px 1fr;
+
+    gap: 1rem;
+  }
+
+  .chatappy-security-card {
+    grid-template-columns: 1fr;
+  }
+
+  .chatappy-security-card div {
+    border-right: none;
+    border-bottom: 1px solid rgba(243, 237, 207, 0.2);
+  }
+
+  .chatappy-security-card div:last-child {
+    border-bottom: none;
+  }
+
+  .chatappy-tech-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
