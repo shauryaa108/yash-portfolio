@@ -1,4 +1,4 @@
-export default async function handler(request) {
+export default async function handler(req, res) {
   console.log("CodeChef function started");
 
   const response = await fetch(
@@ -11,7 +11,7 @@ export default async function handler(request) {
 
   console.log("CodeChef HTML received:", html.length);
 
-  return Response.json({
+  return res.status(200).json({
     success: true,
     length: html.length
   });
