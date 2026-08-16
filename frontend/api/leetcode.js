@@ -1,4 +1,5 @@
 export default async function handler(request){
+    console.log("API function started");
     const query = `
         query userPublicProfile($username : String!){
             matchedUser(username : $username){
@@ -20,6 +21,7 @@ export default async function handler(request){
     const variables = {
         "username": "shauryaaaa108"
     };
+    console.log("Calling LeetCode...");
     const response = await fetch("https://leetcode.com/graphql/",{
         method:"POST",
         headers:{
@@ -30,8 +32,11 @@ export default async function handler(request){
             variables
         })
     });
+    console.log("LeetCode responded:", response.status);
 
     const data = await response.json();
+
+    console.log("LeetCode JSON received");
 
     const submissions = data.data.matchedUser.submitStatsGlobal.acSubmissionNum;
     const contestData = data.data.userContestRanking
