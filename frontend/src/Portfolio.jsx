@@ -114,6 +114,14 @@ function Portfolio() {
             >
                 Contact me
             </button>
+            <a
+              href="https://drive.google.com/file/d/1zE-OycEKWjCI97JGwVjKmHfWN8i3f9Ot/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="side-nav-resume"
+            >
+              Resume ↗
+            </a>
         </nav>
 
         <div className="sidebar-bottom">
