@@ -28,59 +28,16 @@ export default async function handler(req, res) {
 
     const $ = cheerio.load(html);
 
-    /*
-     * -------------------------
-     * USERNAME
-     * -------------------------
-     */
 
     const username =
       $(".user-name").first().text().trim() ||
       "ambush_note_86";
-
-    /*
-     * -------------------------
-     * RATING
-     * -------------------------
-     */
 
     const ratingText = $(".rating-number").first().text().trim();
 
     const rating = ratingText
       ? Number(ratingText.replace(/,/g, ""))
       : null;
-
-    /*
-     * -------------------------
-     * GLOBAL RANK
-     * -------------------------
-     */
-
-    let globalRanking = null;
-
-    $(".rating-ranks .rating-rank").each((index, element) => {
-      const label = $(element)
-        .find("small")
-        .text()
-        .trim()
-        .toLowerCase();
-
-      const value = $(element)
-        .find("strong")
-        .text()
-        .trim()
-        .replace(/,/g, "");
-
-      if (label.includes("global")) {
-        globalRanking = Number(value);
-      }
-    });
-
-    /*
-     * -------------------------
-     * PROBLEMS SOLVED
-     * -------------------------
-     */
 
     let problems = null;
 
@@ -96,17 +53,10 @@ export default async function handler(req, res) {
       }
     });
 
-    /*
-     * -------------------------
-     * FINAL RESPONSE
-     * -------------------------
-     */
-
     const codechefStats = {
       username,
       problems,
       rating,
-      globalRanking,
     };
 
     console.log("CodeChef stats:", codechefStats);

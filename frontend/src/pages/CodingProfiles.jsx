@@ -165,30 +165,6 @@ function CodingProfiles() {
                 </div>
 
 
-                {profile.platform === 'CODEFORCES' && (
-
-                  <div>
-                    <span>RANK</span>
-
-                    <strong>
-                      {codeforces?.rank ?? '...'}
-                    </strong>
-                  </div>
-
-                )}
-
-
-                {profile.platform === 'CODECHEF' && (
-
-                  <div>
-                    <span>GLOBAL RANK</span>
-
-                    <strong>
-                      {codechef?.globalRanking ?? '...'}
-                    </strong>
-                  </div>
-
-                )}
 
               </div>
 
