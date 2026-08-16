@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const navItems = ['Profile', 'My Projects', 'Blogs', 'Contact me']
 const projects = [
     {
@@ -9,7 +9,7 @@ const projects = [
       description:
         'An AI-powered system designed to analyze and identify potentially manipulated or suspicious content.',
       tech: ['Node.js', 'Express', 'MongoDB'],
-      image: '/public/authensight.png',
+      image: '/projects/authensight.png',
       demo: '/authensight',
       github: 'https://github.com/shauryaa108/AuthenSight-AI',
     },
@@ -20,7 +20,7 @@ const projects = [
       description:
           'A real-time chat application built to learn and experiment with Socket.IO, persistent connections, and server-driven communication.',
       tech: ['React', 'Node.js', 'Socket.IO', 'Arcjet'],
-      image: '/public/chatappy.png',
+      image: '/projects/chatappy.png',
       demo: '/chatappy',
       github: 'https://github.com/shauryaa108/ChatAppy',
     },
@@ -31,7 +31,7 @@ const projects = [
       description:
         'A social platform built to explore real-time interactions, authentication, media handling, and modern web application architecture.',
       tech: ['React', 'Node.js', 'MongoDB'],
-      image: '/publi/socialite.png',
+      image: '/projects/socialite.png',
       demo: '/socialite',
       github: 'https://github.com/shauryaa108/Socialite',
     },
@@ -42,7 +42,7 @@ const projects = [
         description:
             'A lightweight website audit tool that analyzes webpages for SEO, accessibility, and basic performance metrics.',
         tech: ['React', 'Node.js', 'Express', 'Cheerio'],
-        image: '/public/markuplens.png',
+        image: '/projects/markuplens.png',
         demo: '/markuplens',
         github: 'https://github.com/shauryaa108/MarkupLens',
     }
@@ -220,14 +220,9 @@ function Portfolio({ active, setActive, scrollTo }) {
                   </div>
 
                   <div className="project-actions">
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="project-explore"
-                    >
+                    <Link to={project.demo} className="project-explore">
                       Explore <span>↗</span>
-                    </a>
+                    </Link>
 
                     <a
                       href={project.github}
