@@ -131,7 +131,7 @@ function Portfolio() {
             <a href="https://leetcode.com/u/shauryaaaa108/" target="_blank" rel="noreferrer">LC</a>
           </div>
           <p>© 2026 Yash Goyal</p>
-          <p>Built with <span aria-label="love">♥</span></p>
+          <p>Built with <span aria-label="love">caffeine at 3AM</span></p>
         </div>
       </aside>
 
