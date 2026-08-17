@@ -101,12 +101,12 @@ function Portfolio() {
                 Coding
             </button>
 
-            <button
+            {/* <button
                 className={active === 'Blogs' ? 'active' : ''}
                 onClick={() => scrollTo('blogs', 'Blogs')}
             >
                 Blogs
-            </button>
+            </button> */}
 
             <button
                 className={active === 'Contact me' ? 'active' : ''}
@@ -266,14 +266,14 @@ function Portfolio() {
           </div>
         </section>
 
-        <section id="blogs" className="placeholder section">
+        {/* <section id="blogs" className="placeholder section">
           <p className="eyebrow">BLOGS / 03</p>
           <h2>Things I’ve learned.</h2>
           <p>We’ll connect this to Markdown/MDX posts after the main visual system is locked.</p>
-        </section>
+        </section> */}
 
         <section id="contact" className="placeholder section contact-section">
-          <p className="eyebrow">CONTACT / 04</p>
+          <p className="eyebrow">CONTACT / 03</p>
           <h2>Let’s build something.</h2>
           <a
             className="pill pill-dark"
